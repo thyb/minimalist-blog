@@ -2,7 +2,7 @@ var blogConfig = {
 	"adminMode": "false", //put true for development (add features for admin)
 
 	"name":"Minimalist Blog",
-	"description":"Minimalist Blog generator for Github Page",
+	"description":"Minimalist Blog generator for Github Pages",
 	"email": "thibaud.arnault@gmail.com",
 	"logo": "assets/gitblog.gif",
 
@@ -42,7 +42,7 @@ var blogConfig = {
 		{
 			"id": "welcome",
 			"title": "Welcome to Minimalist Blog",
-			"summary": "Minimalist Blog generator for Github Page, you only have to add markdown files to create new articles like this one",
+			"summary": "Minimalist Blog generator for Github Pages, you only have to add markdown files to create new articles like this one",
 			"img": {
 				"src": "",
 				"pos": "center"
