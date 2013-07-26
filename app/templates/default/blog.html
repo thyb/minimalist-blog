@@ -1,0 +1,12 @@
+<div class="row" ng-repeat="article in blog.articles | startFrom:(pagination.current-1)*pagination.nbPerPage | limitTo:pagination.nbPerPage">
+	<div class="col col-lg-12">
+		<h3><a ng-href="#/articles/{{article.id}}">{{article.title}}</a></h3>
+		<p style="color: #666; margin-top: -5px">Edited by <span class="author">{{article.author}}</span> the {{article.date
+		 | fromNow}}</p>
+		<p><span ng-bind-html-unsafe="article.summary"></span> <a ng-href="#/articles/{{article.id}}">see more...</a></p>
+	</div>
+	<hr />
+</div>
+<div class="row">
+	<pagination style="margin-top: -5px; cursor: pointer;" num-pages="pagination.nbPages" current-page="pagination.current" max-size="pagination.max"></pagination>
+</div>

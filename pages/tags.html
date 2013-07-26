@@ -1,0 +1,6 @@
+<div ng-controller="TagsCtrl">
+	<p><strong>Tags</strong></p>
+	<ul>
+		<li ng-repeat="tag in tags"><a ng-href="#/tags/{{tag.name}}">{{tag.name}} ({{tag.count}})</a></li>
+	</ul>
+</div>

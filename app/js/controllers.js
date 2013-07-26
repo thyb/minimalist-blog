@@ -1,0 +1,118 @@
+var ArticleCtrl, BlogCtrl, IndexCtrl, NotFoundCtrl, PageCtrl, TagCtrl, TagsCtrl;
+
+IndexCtrl = function($rootScope, $scope, $location) {
+  var i, layout, theme, _results;
+  $rootScope.menuSelected = $location.path();
+  theme = blogConfig.theme || "default";
+  layout = blogConfig.layout || "default";
+  $scope.blog = blogConfig;
+  $scope.pagination = {
+    nbPerPage: 5,
+    nbPages: Math.ceil(blogConfig.articles.length / 5),
+    current: 1,
+    max: 3
+  };
+  $scope.template = {
+    header: "app/templates/" + theme + "/header.html",
+    footer: "app/templates/" + theme + "/footer.html"
+  };
+  if ($scope.blog.sidebar !== false) {
+    _results = [];
+    for (i in $scope.blog.sidebar.block) {
+      _results.push((function(i) {
+        var page;
+        page = $scope.blog.sidebar.block[i];
+        return $scope.blog.sidebar.block[i] = "pages/" + page;
+      })(i));
+    }
+    return _results;
+  }
+};
+
+BlogCtrl = function($scope, $rootScope, $location) {
+  $rootScope.menuSelected = $location.path();
+  $scope.blog = blogConfig;
+  return $scope.pagination = {
+    nbPerPage: 5,
+    nbPages: Math.ceil(blogConfig.articles.length / 5),
+    current: 1,
+    max: 3
+  };
+};
+
+ArticleCtrl = function($routeParams, $scope, $location, $rootScope, BlogService, $disqus) {
+  $rootScope.menuSelected = $location.path();
+  if (blogConfig.social.disqus) {
+    $disqus.shortname("oauthioblog");
+  }
+  $scope.id = $routeParams.id;
+  return BlogService.getArticle($routeParams.id, (function(data, article) {
+    $scope.article = data;
+    return $scope.articleMeta = article;
+  }), function(error) {
+    return console.log(error);
+  });
+};
+
+PageCtrl = function($routeParams, $scope, $rootScope, $location) {
+  $rootScope.menuSelected = $location.path();
+  return $scope.page = "pages/" + $routeParams.page + ".html";
+};
+
+TagCtrl = function($scope, $routeParams, $location, $rootScope) {
+  var article, _i, _len, _ref, _results;
+  if (!$routeParams.tag) {
+    $location.path("/404");
+  }
+  $rootScope.menuSelected = $location.path();
+  $scope.articlesTag = [];
+  _ref = blogConfig.articles;
+  _results = [];
+  for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+    article = _ref[_i];
+    if (article.tags.filter(function(n) {
+      return n === $routeParams.tag;
+    }).length === 1) {
+      _results.push($scope.articlesTag.push(article));
+    } else {
+      _results.push(void 0);
+    }
+  }
+  return _results;
+};
+
+TagsCtrl = function($scope, $location, $rootScope) {
+  var article, t, tag, _i, _len, _ref, _results;
+  $rootScope.menuSelected = $location.path();
+  $scope.tags = [];
+  _ref = blogConfig.articles;
+  _results = [];
+  for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+    article = _ref[_i];
+    _results.push((function() {
+      var _j, _len1, _ref1, _results1;
+      _ref1 = article.tags;
+      _results1 = [];
+      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+        tag = _ref1[_j];
+        t = $scope.tags.find(function(n) {
+          return n['name'] === tag;
+        });
+        if (!t) {
+          _results1.push($scope.tags.push({
+            name: tag,
+            count: 1
+          }));
+        } else {
+          _results1.push(t.count++);
+        }
+      }
+      return _results1;
+    })());
+  }
+  return _results;
+};
+
+NotFoundCtrl = function($scope, $routeParams) {
+  return $scope.errorGif = '/img/404/' + (Math.floor(Math.random() * 2) + 1) + '.gif';
+};
