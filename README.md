@@ -69,7 +69,7 @@ var blogConfig = {
 		{
 			"id": "welcome-to-my-blog", //take the articles/welcome-to-my-blog.md file
 			"title": "Article title",
-			"resume": "...", //the resume you want to display on the front page
+			"summary": "...", //the summary you want to display on the front page
 			"img": { // TODO: not used yet
 				"src": "assets/yourImage.png", //title image url
 				"imgPosition": "center" //left right center
