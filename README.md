@@ -7,9 +7,10 @@ Installing
 ----------
 
 Fork it on a `gh-pages` branch to host it on github
-Then
 
- ```sh
+then, you can pull your new repository and run it
+
+ ```bash
 git clone ...
 cd minimalist-blog && npm install && grunt server
  ```
@@ -29,11 +30,36 @@ var blogConfig = {
 	"theme": "default", //your can make your own theme defined a new folder in app/templates/
 	"social": {
 		"disqus": "...", //set your disqus id if you want to enable comments
-		"twitter_account": "..." //set your twitter account if you want add some follow button
+		"twitter_account": "..." //set your twitter account if you want add some follow button,
+		"github": { // TODO: not used yet
+			"account": "thyb",
+			"repository": "minimalist-blog"
+		}
 	},
-	"authors": {
-		"name": "email@domain.com" //set all authors name
-	},
+	"authors": [
+		{
+			"username": "thyb",
+			"fullname": "Thibaud Arnault",
+			"email": "thyb@oauth.io"
+		}
+	],
+	"menu": [
+		{
+			"url": "#/",
+			"text": "Home"
+		},
+		{
+			"url": "#/pages/me", //You can link your menu to a custom page
+			"text": "About me"
+		}
+		//...
+	],
+	"sidebar": [
+		"tags.html", //include pages/tags.html in the first block
+		"forkme.html",
+		"follow.html"
+		//...
+	],
 	"sortArticle": "desc", //asc or desc : define the order to display
 	"limitPerPage": 5, //number of article displayed per page
 	"articles": [ //define all your article here
@@ -41,11 +67,13 @@ var blogConfig = {
 			"id": "welcome-to-my-blog", //take the articles/welcome-to-my-blog.md file
 			"title": "Article title",
 			"resume": "...", //the resume you want to display on the front page
-			"img": "assets/yourImage.png", //title image url
-			"imgPosition": "center", //left right center
+			"img": { // TODO: not used yet
+				"src": "assets/yourImage.png", //title image url
+				"imgPosition": "center" //left right center
+			}
 			"date": "7-14-2013", //date of the post
 			"author": "thyb", //the author id
-			"markdown": true, //if false, it will take the articles/welcome-to-my-blog.html file
+			"format": "markdown", //can be `html̀` or `markdown`
 			"tags": ["my-tag1", "my-tag2"] //set tags
 		}
 		//...
@@ -53,7 +81,7 @@ var blogConfig = {
 }
  ```
 
-All your articles are in ̀`articles/` folder.
+All your articles are in ̀`articles/` folder. This will render a blog like this one: [DEMO](http://thyb.github.io/minimalist-blog)
 
 Copyright & License
 -------------------
@@ -69,5 +97,4 @@ You may obtain a copy of the License at
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+See the License for the specific language governing permissions and limitations under the License.

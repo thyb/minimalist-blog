@@ -19,27 +19,22 @@ IndexCtrl = ($rootScope, $scope, $location)->
 	theme = blogConfig.theme || "default"
 	layout = blogConfig.layout || "default"
 	$scope.blog = blogConfig
-	$scope.pagination = #to remove when blog on BlogCtrl
-			nbPerPage: 5
-			nbPages: Math.ceil(blogConfig.articles.length / 5)
-			current: 1
-			max: 3
+
 	$scope.template =
 		header: "app/templates/" + theme + "/header.html"
 		footer: "app/templates/" + theme + "/footer.html"
 
 	if $scope.blog.sidebar != false
-		for i of $scope.blog.sidebar.block
-			do (i) ->
-				page = $scope.blog.sidebar.block[i]
-				$scope.blog.sidebar.block[i] = "pages/" + page
+		for i of $scope.blog.sidebar
+			page = $scope.blog.sidebar[i]
+			$scope.blog.sidebar[i] = "pages/" + page
 
 BlogCtrl = ($scope, $rootScope, $location) ->
 	$rootScope.menuSelected = $location.path()
 	$scope.blog = blogConfig
 	$scope.pagination =
-			nbPerPage: 5
-			nbPages: Math.ceil(blogConfig.articles.length / 5)
+			nbPerPage: blogConfig.limitPerPage
+			nbPages: Math.ceil(blogConfig.articles.length / blogConfig.limitPerPage)
 			current: 1
 			max: 3
 

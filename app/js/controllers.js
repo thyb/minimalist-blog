@@ -1,29 +1,20 @@
 var ArticleCtrl, BlogCtrl, IndexCtrl, NotFoundCtrl, PageCtrl, TagCtrl, TagsCtrl;
 
 IndexCtrl = function($rootScope, $scope, $location) {
-  var i, layout, theme, _results;
+  var i, layout, page, theme, _results;
   $rootScope.menuSelected = $location.path();
   theme = blogConfig.theme || "default";
   layout = blogConfig.layout || "default";
   $scope.blog = blogConfig;
-  $scope.pagination = {
-    nbPerPage: 5,
-    nbPages: Math.ceil(blogConfig.articles.length / 5),
-    current: 1,
-    max: 3
-  };
   $scope.template = {
     header: "app/templates/" + theme + "/header.html",
     footer: "app/templates/" + theme + "/footer.html"
   };
   if ($scope.blog.sidebar !== false) {
     _results = [];
-    for (i in $scope.blog.sidebar.block) {
-      _results.push((function(i) {
-        var page;
-        page = $scope.blog.sidebar.block[i];
-        return $scope.blog.sidebar.block[i] = "pages/" + page;
-      })(i));
+    for (i in $scope.blog.sidebar) {
+      page = $scope.blog.sidebar[i];
+      _results.push($scope.blog.sidebar[i] = "pages/" + page);
     }
     return _results;
   }
@@ -33,8 +24,8 @@ BlogCtrl = function($scope, $rootScope, $location) {
   $rootScope.menuSelected = $location.path();
   $scope.blog = blogConfig;
   return $scope.pagination = {
-    nbPerPage: 5,
-    nbPages: Math.ceil(blogConfig.articles.length / 5),
+    nbPerPage: blogConfig.limitPerPage,
+    nbPages: Math.ceil(blogConfig.articles.length / blogConfig.limitPerPage),
     current: 1,
     max: 3
   };

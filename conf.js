@@ -28,14 +28,11 @@ var blogConfig = {
 			"text": "About me"
 		}
 	],
-	"sidebar": {
-		"position": "right",
-		"block": [
-			"tags.html",
-			"forkme.html",
-			"follow.html"
-		]
-	},
+	"sidebar": [
+		"tags.html",
+		"forkme.html",
+		"follow.html"
+	],
 	"sortArticle": "desc",
 	"limitPerPage": 5,
 	"articles": [

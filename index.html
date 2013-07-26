@@ -10,7 +10,6 @@
     <script src="app/lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
     <script src="app/lib/angular-disqus/angular-disqus.js"></script>
     <script src="app/lib/moment/moment.js"></script>
-    
     <script src="app/lib/sugar/sugar.min.js"></script>
     <script src="app/lib/bootstrap3/js/bootstrap.js"></script>
     <script src="app/js/app.js"></script>
@@ -48,8 +47,8 @@
       <div ng-class="{'col-lg-8':blog.sidebar != false, 'col-lg-12':blog.sidebar == false, 'col': true}">
         <div ng-view></div>
       </div>
-      <div class="col col-lg-4" ng-hide="blog.sidebar == false" id="sidebar">
-        <div ng-repeat="s in blog.sidebar.block">
+      <div class="col col-lg-4" ng-hide="blog.sidebar == false || blog.sidebar == []" id="sidebar">
+        <div ng-repeat="s in blog.sidebar">
           <div ng-include="s"></div>
           <hr />
         </div>
