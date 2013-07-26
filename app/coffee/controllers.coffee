@@ -41,7 +41,7 @@ BlogCtrl = ($scope, $rootScope, $location) ->
 ArticleCtrl = ($routeParams, $scope, $location, $rootScope, BlogService, $disqus) ->
 	$rootScope.menuSelected = $location.path()
 	if blogConfig.social.disqus
-		$disqus.shortname "oauthioblog"
+		$disqus.shortname blogConfig.social.disqus
 
 	$scope.id = $routeParams.id
 	BlogService.getArticle $routeParams.id, ((data, article) ->
@@ -66,9 +66,17 @@ TagCtrl = ($scope, $routeParams, $location, $rootScope) ->
 
 	$scope.articlesTag = []
 	for article in blogConfig.articles
-		$scope.articlesTag.push article if article.tags.filter((n) ->
-			return n == $routeParams.tag
-		).length == 1
+		console.log article
+		for tag in article.tags
+			if tag == $routeParams.tag
+				$scope.articlesTag.push article
+
+	$scope.pagination =
+			nbPerPage: blogConfig.limitPerPage
+			nbPages: Math.ceil($scope.articlesTag.length / blogConfig.limitPerPage)
+			current: 1
+			max: 3
+
 
 TagsCtrl = ($scope, $location, $rootScope) ->
 	$rootScope.menuSelected = $location.path()

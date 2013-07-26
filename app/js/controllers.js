@@ -34,7 +34,7 @@ BlogCtrl = function($scope, $rootScope, $location) {
 ArticleCtrl = function($routeParams, $scope, $location, $rootScope, BlogService, $disqus) {
   $rootScope.menuSelected = $location.path();
   if (blogConfig.social.disqus) {
-    $disqus.shortname("oauthioblog");
+    $disqus.shortname(blogConfig.social.disqus);
   }
   $scope.id = $routeParams.id;
   return BlogService.getArticle($routeParams.id, (function(data, article) {
@@ -51,25 +51,30 @@ PageCtrl = function($routeParams, $scope, $rootScope, $location) {
 };
 
 TagCtrl = function($scope, $routeParams, $location, $rootScope) {
-  var article, _i, _len, _ref, _results;
+  var article, tag, _i, _j, _len, _len1, _ref, _ref1;
   if (!$routeParams.tag) {
     $location.path("/404");
   }
   $rootScope.menuSelected = $location.path();
   $scope.articlesTag = [];
   _ref = blogConfig.articles;
-  _results = [];
   for (_i = 0, _len = _ref.length; _i < _len; _i++) {
     article = _ref[_i];
-    if (article.tags.filter(function(n) {
-      return n === $routeParams.tag;
-    }).length === 1) {
-      _results.push($scope.articlesTag.push(article));
-    } else {
-      _results.push(void 0);
+    console.log(article);
+    _ref1 = article.tags;
+    for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+      tag = _ref1[_j];
+      if (tag === $routeParams.tag) {
+        $scope.articlesTag.push(article);
+      }
     }
   }
-  return _results;
+  return $scope.pagination = {
+    nbPerPage: blogConfig.limitPerPage,
+    nbPages: Math.ceil($scope.articlesTag.length / blogConfig.limitPerPage),
+    current: 1,
+    max: 3
+  };
 };
 
 TagsCtrl = function($scope, $location, $rootScope) {
