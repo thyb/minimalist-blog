@@ -41,9 +41,9 @@ var blogConfig = {
 			"username": "thyb",
 			"fullname": "Thibaud Arnault",
 			"email": "thyb@oauth.io",
-			"gravatar": "4bda4cba273a73659a518e5ab26fc1bb",
-			"job": "CEO & Co-founder of Webshell.io & OAuth.io",
-			"bio": "During a week end, I wanted to make a blog easy to configure, easy to spread, with awesome collaboration tools. What could be better than a blog on top of Github using Github pages? I think it's a new simple way for developers to blog. Now, you can use versionning, collaboration and hosting efficiently with Github & Github pages for your blog. I just made a kind of skeleton. Have fun using it :)"
+			"gravatar": "4bda4cba273a73659a518e5ab26fc1bb", //The gravatar ID
+			"job": "...",
+			"bio": "..."
 		}
 	],
 	"menu": [
