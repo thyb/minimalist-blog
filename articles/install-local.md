@@ -1,13 +1,11 @@
 Requirement
 -----------
 
-npm
-node
+* npm
+* node
+* jekyll
 
-Install Jekyll
---------------
-
-sudo npm install -g jekyll
+__Install Jekyll__ : sudo npm install -g jekyll
 
 Install minimalist-blog
 -----------------------

@@ -47,7 +47,7 @@ var blogConfig = {
 				"src": "",
 				"pos": "center"
 			},
-			"date": "7-14-2013",
+			"date": "7-25-2013",
 			"author": "thyb",
 			"format": "markdown",
 			"tags": ["welcome"]
@@ -65,7 +65,7 @@ var blogConfig = {
 			"id": "install-github",
 			"title": "Install your blog in 1 minute on your Github account",
 			"summary": "To install this blog on your account, you just have to fork this repository in <code>gh-pages</code> branch",
-			"date": "7-25-2013",
+			"date": "7-26-2013",
 			"author": "thyb",
 			"format": "markdown",
 			"tags": ["install"]
@@ -74,7 +74,7 @@ var blogConfig = {
 			"id": "install-local",
 			"title": "Install in local using Jekyll",
 			"summary": "You can clone this repository and modify it as your need and host it using <code>grunt server</code> command. Then you can access your blog on <a href=\"http://localhost:4000\">http://localhost:4000</a>",
-			"date": "7-25-2013",
+			"date": "7-26-2013",
 			"author": "thyb",
 			"format": "markdown",
 			"tags": ["install"]
