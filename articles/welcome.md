@@ -16,12 +16,16 @@ var blogConfig = {
 		"disqus": "oauthioblog",
 		"twitter_account": "thibaud_arnault"
 	},
-	"authors": {
-		"thyb": {
+	"authors": [
+		{
+			"username": "thyb",
 			"fullname": "Thibaud Arnault",
-			"email": "thibaud.arnault@gmail.com"
+			"email": "thyb@oauth.io",
+			"gravatar": "4bda4cba273a73659a518e5ab26fc1bb",
+			"job": "CEO & Co-founder of Webshell.io & OAuth.io",
+			"bio": "During (...) Have fun using it :)"
 		}
-	},
+	],
 	"menu": [
 		{
 			"url": "#/",
@@ -43,7 +47,7 @@ var blogConfig = {
 		{
 			"id": "welcome",
 			"title": "Welcome to Minimalist Blog",
-			"summary": "Minimalist Blog generator for Github Page, you only have to add markdown files to create new articles like this one",
+			"summary": "Minimalist Blog generator for Github Pages, you only have to add markdown files in <code>articles/</code> folder to create new articles like this one",
 			"img": {
 				"src": "",
 				"pos": "center"
