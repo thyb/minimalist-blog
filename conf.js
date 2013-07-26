@@ -8,7 +8,7 @@ var blogConfig = {
 
 	"theme": "default",
 	"social": {
-		"disqus": "oauthioblog",
+		"disqus": "minimalist-blog",
 		"twitter_account": "thibaud_arnault"
 	},
 	"authors": [
