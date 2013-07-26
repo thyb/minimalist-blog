@@ -47,7 +47,7 @@ var blogConfig = {
 		{
 			"id": "welcome",
 			"title": "Welcome to Minimalist Blog",
-			"summary": "Minimalist Blog generator for Github Pages, you only have to add markdown files in <code>articles/</code> folder to create new articles like this one",
+			"summary": "Minimalist Blog generator ...",
 			"img": {
 				"src": "",
 				"pos": "center"
