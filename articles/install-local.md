@@ -17,4 +17,4 @@ npm install
 grunt server
  ```
 
-Once server launched, just go on [http://localhost:4000/](http://localhost:4000/) to see your blog routed on your conf.js.
+Once server launched, just go at [http://localhost:4000/](http://localhost:4000/) to see your blog routed on your conf.js.
